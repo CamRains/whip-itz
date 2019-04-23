@@ -2,8 +2,32 @@ import React, { Component } from "react";
 // import Logo from "./logo.png";
 import { Link } from "react-router-dom";
 import "./header.css";
+import axios from "axios";
 // import axios from 'axios'
 class Header extends Component {
+constructor(props) {
+  super(props)
+
+  this.state = {
+    guest: ""
+  }
+
+this.getSession= this.getSession.bind(this)
+
+}
+  componentDidMount(){
+    this.getSession()
+  }
+
+  getSession() {
+    axios.get("/auth/guest").then(res => {
+      console.log(res.data);
+      this.setState({
+        guest: res.data
+      });
+    });
+  }
+
   render() {
     return (
       <header>
@@ -14,7 +38,6 @@ class Header extends Component {
                 className="logo-image"
                 src={Logo}
                 alt="Logo could not display" */}
-              />
             </div>
 
             <nav>
@@ -36,6 +59,9 @@ class Header extends Component {
                 </li>
                 <li>
                   <Link to="/contact">Contact</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
                 </li>
               </ul>
             </nav>

@@ -1,47 +1,42 @@
 const express = require("express");
 const massive = require("massive");
 const app = express();
-const pC = require("./controllers/productsController")
+const pC = require("./controllers/productsController");
+const aC = require("./controllers/authController");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
-app.use(express.json())
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
+app.use(express.json());
 massive(CONNECTION_STRING).then(dbInstance => {
-    app.set("db", dbInstance);
-    dbInstance.init()
-    console.log("you done did it right my doode")
-
-})
+  app.set("db", dbInstance);
+  dbInstance.init();
+  console.log("you done did it right my doode");
+});
 
 app.use(
-    session({
-        secret: SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            maxAge: 1000* 60 * 60 * 24 *14
-        }
-    })
-)
-    
-
-
+  session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 14
+    }
+  })
+);
 
 // products
-app.get("/api/store", pC.getAll)
-app.post("/api/products",pC.addToCart)
+app.get("/api/store", pC.getAll);
+app.post("/api/products", pC.addToCart);
+
+//auth?
 
 
-
-
-
-
-
-
-
+app.post('/auth/register', aC.register)
+app.post('/auth/login', aC.login)
+app.get('/auth/logout', aC.logout)
+app.get("/auth/guest", aC.getSession);
 
 
 app.listen(SERVER_PORT || 5150, () =>
