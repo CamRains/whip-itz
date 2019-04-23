@@ -1,0 +1,9 @@
+.header-container {
+  height: 100px;
+  width: 100vw;
+  background: blue;
+  display: flex
+}
+.logo-container{
+    height: 10px;
+}
