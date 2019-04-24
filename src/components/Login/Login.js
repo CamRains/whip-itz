@@ -11,7 +11,8 @@ class Login extends Component {
       password: "",
       first_name: "",
       last_name: "",
-      loggedInUser: {}
+      loggedInUser: {},
+      message: ""
     };
 
     this.login = this.login.bind(this);
@@ -26,17 +27,29 @@ class Login extends Component {
     });
   }
 
-  async login() {
+  login() {
     let { email, password } = this.state;
     axios.post("/auth/login", { email, password }).then(res => {
-      this.setState({
-        loggedInUser: res.data,
-        email: "",
-        password: ""
-      });
+      console.log("LABEL", typeof res.data);
+      if (typeof res.data == "string") {
+        console.log("whatever hit");
+
+        this.setState({
+          message: res.data
+        });
+      } else {
+        this.setState({
+          loggedInUser: res.data,
+          email: "",
+          password: "",
+          message: ""
+        });
+        this.props.history.push("/products");
+      }
     });
   }
 
+  //
   // async register() {
   //   let { email, password, first_name, last_name } = this.state;
   //   axios
@@ -69,13 +82,13 @@ class Login extends Component {
               <input
                 value={email}
                 onChange={e => this.setState({ email: e.target.value })}
-                type="text"
+                type="email"
                 placeholder="Email"
               />
               <input
                 value={password}
                 onChange={e => this.setState({ password: e.target.value })}
-                type="text"
+                type="password"
                 placeholder="Password"
               />
             </li>
@@ -92,6 +105,7 @@ class Login extends Component {
             <button>Register</button>
           </Link>
         </div>
+        {this.state.message}
       </div>
     );
   }

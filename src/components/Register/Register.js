@@ -50,7 +50,7 @@ class Register extends Component {
               <input
                 value={email}
                 onChange={e => this.setState({ email: e.target.value })}
-                type="text"
+                type="email"
                 placeholder="Email"
               />
             </li>
@@ -58,7 +58,7 @@ class Register extends Component {
               <input
                 value={password}
                 onChange={e => this.setState({ password: e.target.value })}
-                type="text"
+                type="password"
                 placeholder="Password"
               />
             </li>

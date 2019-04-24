@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 let user_id = 1;
 
 module.exports = {
@@ -36,19 +36,21 @@ module.exports = {
     const db = req.app.get("db");
 
     let userFound = await db.check_user_exists(email);
-    if (!userFound[0]) {
-      console.log(userFound);
+    if (userFound.length == 0) {
+      console.log("label false", userFound);
       res.status(200).send("Incorrect email please try again");
+      } else {
+        console.log("true", userFound);
+        let result = bcrypt.compare(password, userFound[0].user_password);
+        if (result) {
+          req.session.user = { id: userFound[0].id, email: userFound[0].email };
+          res.status(200).send(req.session.user);
+        } else {
+          res.status(200).send("Incorrect email/password");
+        }
+      }
     }
-    // console.log(result)
-    let result = bcrypt.compare(password, userFound[0].password);
-    if (result) {
-      req.session.user = { id: userFound[0].id, email: userFound[0].email };
-      res.status(200).send(req.session.user);
-    } else {
-      res.status(200).send("Incorrect email/password");
-    }
-  },
+  ,
 
   logout: (req, res) => {
     req.session.destroy();
