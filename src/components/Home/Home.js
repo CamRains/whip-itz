@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./home.css";
 
 class Home extends Component {
   // constructor() {
@@ -9,9 +10,13 @@ class Home extends Component {
   render() {
     return (
       <div className="landing-page">
-        <Link to="products">
-          <button> Products</button>
-        </Link>
+        <div className="products-button">
+          <div>
+            <Link to="products">
+              <button> Products</button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

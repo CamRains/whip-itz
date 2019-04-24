@@ -27,13 +27,13 @@ class Products extends Component {
 
 
 
-  
+
 
   render() {
-    const products = this.state.products.map((product, index) => {
+    const products = this.state.products.map((product, product_id) => {
       return (
         <div>
-          <div className="products-container" key={index}>
+          <div className="products-container" key={product_id}>
             <h2>{product.name}</h2>
             {product.price}
             {/* <img src={product.image} /> */}

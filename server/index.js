@@ -26,6 +26,12 @@ app.use(
   })
 );
 
+
+//admin
+app.get("/api/admin", (req,res) => {
+    res.status(200).send(req.session.user)
+})
+
 // products
 app.get("/api/store", pC.getAll);
 app.post("/api/products", pC.addToCart);

@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 let user_id = 1;
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
       } else {
         const saltRounds = 12;
         bcrypt.genSalt(saltRounds).then(salt => {
-          bcrypt.has(password, salt).then(hashedPassword => {
+          bcrypt.hash(password, salt).then(hashedPassword => {
             db.users([email, hashedPassword, first_name, last_name]).then(
               loggedInUser => {
                 req.session.user = {
@@ -40,7 +40,8 @@ module.exports = {
       console.log(userFound);
       res.status(200).send("Incorrect email please try again");
     }
-    let result = bcrypt.compare(password, userFound[0].user_password);
+    // console.log(result)
+    let result = bcrypt.compare(password, userFound[0].password);
     if (result) {
       req.session.user = { id: userFound[0].id, email: userFound[0].email };
       res.status(200).send(req.session.user);
