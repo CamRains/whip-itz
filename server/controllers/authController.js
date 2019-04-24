@@ -9,8 +9,10 @@ module.exports = {
     const db = req.app.get("db");
     db.check_user_exists(email).then(user => {
       if (user.length) {
+        console.log("register label false",user)
         res.status(200).send("Email already exists in the database ");
       } else {
+        console.log("register true", user)
         const saltRounds = 12;
         bcrypt.genSalt(saltRounds).then(salt => {
           bcrypt.hash(password, salt).then(hashedPassword => {
@@ -38,7 +40,7 @@ module.exports = {
     let userFound = await db.check_user_exists(email);
     if (userFound.length == 0) {
       console.log("label false", userFound);
-      res.status(200).send("Incorrect email please try again");
+      res.status(200).send("Incorrect Email or Password, please try again!");
       } else {
         console.log("true", userFound);
         let result = bcrypt.compare(password, userFound[0].user_password);

@@ -28,7 +28,7 @@ app.use(
 
 
 //admin
-app.get("/api/admin", (req,res) => {
+app.get("/api/auth", (req,res) => {
     res.status(200).send(req.session.user)
 })
 

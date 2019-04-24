@@ -6,7 +6,9 @@ class Products extends Component {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      shoppingCart: [],
+
     };
   }
 
@@ -23,7 +25,9 @@ class Products extends Component {
     });
   };
 
-
+  addToCart = (product_id, name ,price , description, image) => {
+    
+  }
 
 
 
@@ -40,7 +44,7 @@ class Products extends Component {
             {product.description}
           </div>
           <div className="storefront-buttons">
-            <button>Add to Cart</button>
+            <button onClick={() => this.addToCart(product)}>Add to Cart</button>
           </div>
         </div>
       );

@@ -13,7 +13,7 @@ module.exports = {
   addToCart: (req, res) => {
     const db = req.app.get("db");
     const { name, price, description, image } = req.body;
-    db.addToCart([name, price, description, image,admin_id])
+    db.UserCart([name, price, description, image,admin_id])
       .then(product => {
         res.status(200).send(product);
       })

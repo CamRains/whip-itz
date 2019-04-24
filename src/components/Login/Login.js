@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { requestUserData } from "../../ducks/userReducer";
+import { connect } from "react-redux";
 // import Header from "../Header/Header";
 
 class Login extends Component {
@@ -9,8 +11,8 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      first_name: "",
-      last_name: "",
+      // first_name: "",
+      // last_name: "",
       loggedInUser: {},
       message: ""
     };
@@ -31,6 +33,7 @@ class Login extends Component {
     let { email, password } = this.state;
     axios.post("/auth/login", { email, password }).then(res => {
       console.log("LABEL", typeof res.data);
+      console.log("SAHHAHAHAHAHA", res.data);
       if (typeof res.data == "string") {
         console.log("whatever hit");
 
@@ -72,7 +75,7 @@ class Login extends Component {
   }
 
   render() {
-    let { loggedInUser, email, password, first_name, last_name } = this.state;
+    let { loggedInUser, email, password,  } = this.state;
     console.log(this.props);
     return (
       <div className="form-container-parent">
@@ -96,7 +99,7 @@ class Login extends Component {
           {loggedInUser.email ? (
             <button onClick={() => this.logout()}>Logout</button>
           ) : (
-            <button onClick={() => this.login()}>Login</button>
+            <button onClick={() => this.props.requestUserData(this.state.email, this.state.password)}>Login</button>
           )}
         </div>
         &nbsp;
@@ -105,10 +108,21 @@ class Login extends Component {
             <button>Register</button>
           </Link>
         </div>
-        {this.state.message}
+        {this.props.message}
       </div>
     );
   }
 }
 
-export default Login;
+function mapStateToProps(state) {
+  return state;
+}
+
+const MapDispatchToProps = {
+  requestUserData
+};
+
+export default connect(
+  mapStateToProps,
+  MapDispatchToProps
+)(Login);

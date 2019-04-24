@@ -12,7 +12,9 @@ class ShoppingCart extends Component{
     render() {
         return(
             <div>
-            
+            <div>
+                buy some shit doode
+            </div>
             </div>
         )
     }
