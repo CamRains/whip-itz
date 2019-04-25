@@ -11,9 +11,11 @@ module.exports = {
       .catch(err => console.log("error in getAll", err));
   },
   addToCart: (req, res) => {
+    const user_id = req.session.user.user_id
     const db = req.app.get("db");
-    const { name, price, description, image } = req.body;
-    db.UserCart([name, price, description, image,admin_id])
+    const {product_id,quantity } = req.body;
+    console.log("products controller",req.body)
+    db.UserCart([product_id,user_id,quantity])
       .then(product => {
         res.status(200).send(product);
       })

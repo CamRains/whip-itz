@@ -6,6 +6,7 @@
 	align-items: flex-end;
 	align-content: center;
   height: 80vh;
+  width: 100vw;
   background-image: url("https://scontent.fphx1-1.fna.fbcdn.net/v/t1.0-9/66946_437615712982164_959718576_n.jpg?_nc_cat=109&_nc_ht=scontent.fphx1-1.fna&oh=d3d77db42ceba27a4e8ab0575e475608&oe=5D2C976D");
   background-size: cover;
 }

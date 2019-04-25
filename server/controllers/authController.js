@@ -9,10 +9,10 @@ module.exports = {
     const db = req.app.get("db");
     db.check_user_exists(email).then(user => {
       if (user.length) {
-        console.log("register label false",user)
+        console.log("register label false", user);
         res.status(200).send("Email already exists in the database ");
       } else {
-        console.log("register true", user)
+        console.log("register true", user);
         const saltRounds = 12;
         bcrypt.genSalt(saltRounds).then(salt => {
           bcrypt.hash(password, salt).then(hashedPassword => {
@@ -40,20 +40,23 @@ module.exports = {
     let userFound = await db.check_user_exists(email);
     if (userFound.length == 0) {
       console.log("label false", userFound);
-      res.status(200).send("Incorrect Email or Password, please try again!");
+      res.status(401).send("Incorrect Email or Password, please try again!");
+    } else {
+      console.log("true", userFound);
+      let result = await bcrypt.compare  (password, userFound[0].password);
+      console.log(result);
+
+      if (result) {
+        req.session.user = {
+          user_id: userFound[0].user_id,
+          email: userFound[0].email
+        };
+        res.status(200).send(req.session.user);
       } else {
-        console.log("true", userFound);
-        let result = bcrypt.compare(password, userFound[0].user_password);
-        if (result) {
-          req.session.user = { id: userFound[0].id, email: userFound[0].email };
-          res.status(200).send(req.session.user);
-        } else {
-          res.status(200).send("Incorrect email/password");
-        }
+        res.status(401).send("Incorrect Email or Password, please try again!");
       }
     }
-  ,
-
+  },
   logout: (req, res) => {
     req.session.destroy();
     res.sendStatus(200);

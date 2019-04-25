@@ -7,8 +7,7 @@ class Products extends Component {
 
     this.state = {
       products: [],
-      shoppingCart: [],
-
+      shoppingCart: []
     };
   }
 
@@ -25,19 +24,20 @@ class Products extends Component {
     });
   };
 
-  addToCart = (product_id, name ,price , description, image) => {
-    
-  }
-
-
-
-
+  addToCart = product => {
+    console.log("dhafwegifbhabhbLABEL BALLS", product)
+    axios.post("/api/products", product).then(res => {
+      console.log(res);
+    });
+  };
 
   render() {
-    const products = this.state.products.map((product, product_id) => {
+    const products = this.state.products.map((product,) => {
+      console.log(product);
+      
       return (
         <div>
-          <div className="products-container" key={product_id}>
+          <div className="products-container" key={product.product_id}>
             <h2>{product.name}</h2>
             {product.price}
             {/* <img src={product.image} /> */}

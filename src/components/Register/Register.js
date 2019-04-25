@@ -12,45 +12,46 @@ class Register extends Component {
       password: "",
       first_name: "",
       last_name: "",
+      message: ""
       // loggedInUser: {}
     };
-    this.register = this.register.bind(this);
+    // this.register = this.register.bind(this);
   }
-  // componentDidMount() {
-  //   axios.get("/auth/guest").then(res => {
-  //     this.setState({
-  //       loggedInUser: res.data
-  //     });
-  //   });
-  // }
-
-  register() {
-    let { email, password, first_name, last_name } = this.state;
-    axios
-      .post("/auth/register", { email, password, first_name, last_name })
-      .then(res => {
-        console.log("REGISTER LABEL", typeof res.data);
-        if (typeof res.data == "string") {
-          console.log("register whatever hit");
-          this.setState({
-            message: res.data
-          });
-        } else {
-          this.setState({
-            loggedInUser: res.data,
-            email: "",
-            password: "",
-            first_name: "",
-            last_name: ""
-          });
-          this.props.history.push("/products");
-        }
+  componentDidMount() {
+    axios.get("/auth/guest").then(res => {
+      this.setState({
+        loggedInUser: res.data
       });
+    });
   }
+
+  // register() {
+  //   let { email, password, first_name, last_name } = this.state;
+  //   axios
+  //     .post("/auth/register", { email, password, first_name, last_name })
+  //     .then(res => {
+  //       console.log("REGISTER LABEL", typeof res.data);
+  //       if (typeof res.data == "string") {
+  //         console.log("register whatever hit");
+  //         this.setState({
+  //           message: res.data
+  //         });
+  //       } else {
+  //         this.setState({
+  //           loggedInUser: res.data,
+  //           email: "",
+  //           password: "",
+  //           first_name: "",
+  //           last_name: ""
+  //         });
+  //         this.props.history.push("/products");
+  //       }
+  //     });
+  // }
 
   render() {
     let { loggedInUser, email, password, first_name, last_name } = this.state;
-
+    console.log(this.props);
     return (
       <div className="register-form">
         <div>
@@ -93,7 +94,8 @@ class Register extends Component {
                   this.state.email,
                   this.state.password,
                   this.state.first_name,
-                  this.state.last_name
+                  this.state.last_name,
+                  this.props.history
                 )
               }
             >
@@ -101,7 +103,7 @@ class Register extends Component {
             </button>
           </div>
         </div>
-        {this.state.message}
+        {this.props.message}
       </div>
     );
   }

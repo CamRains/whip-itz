@@ -17,55 +17,42 @@ class Login extends Component {
       message: ""
     };
 
-    this.login = this.login.bind(this);
+    // this.login = this.login.bind(this);
     // this.register = this.register.bind(this);
     // moved to register component
   }
   componentDidMount() {
-    axios.get("/auth/guest").then(res => {
-      this.setState({
-        loggedInUser: res.data
-      });
-    });
+    this.props.requestUserData();
+    
+
+    // axios.get("/auth/guest").then(res => {
+    //   this.setState({
+    //     loggedInUser: res.data
+    //   });
+    // });
   }
 
-  login() {
-    let { email, password } = this.state;
-    axios.post("/auth/login", { email, password }).then(res => {
-      console.log("LABEL", typeof res.data);
-      console.log("SAHHAHAHAHAHA", res.data);
-      if (typeof res.data == "string") {
-        console.log("whatever hit");
+  // login() {
+  //   let { email, password } = this.state;
+  //   axios.post("/auth/login", { email, password }).then(res => {
+  //     console.log("LABEL", typeof res.data);
+  //     console.log("SAHHAHAHAHAHA", res.data);
+  //     if (typeof res.data == "string") {
+  //       console.log("whatever hit");
 
-        this.setState({
-          message: res.data
-        });
-      } else {
-        this.setState({
-          loggedInUser: res.data,
-          email: "",
-          password: "",
-          message: ""
-        });
-        this.props.history.push("/products");
-      }
-    });
-  }
-
-  //
-  // async register() {
-  //   let { email, password, first_name, last_name } = this.state;
-  //   axios
-  //     .post("/auth/register", { email, password, first_name, last_name })
-  //     .then(res => {
+  //       this.setState({
+  //         message: res.data
+  //       });
+  //     } else {
   //       this.setState({
   //         loggedInUser: res.data,
   //         email: "",
   //         password: "",
-  //         first_name: "",
-  //         last_name: ""
+  //         message: ""
   //       });
-  //     });
+  // this.props.history.push("/products");
+  //     }
+  //   });
   // }
 
   logout() {
@@ -75,7 +62,7 @@ class Login extends Component {
   }
 
   render() {
-    let { loggedInUser, email, password,  } = this.state;
+    let { loggedInUser, email, password } = this.state;
     console.log(this.props);
     return (
       <div className="form-container-parent">
@@ -99,7 +86,21 @@ class Login extends Component {
           {loggedInUser.email ? (
             <button onClick={() => this.logout()}>Logout</button>
           ) : (
-            <button onClick={() => this.props.requestUserData(this.state.email, this.state.password)}>Login</button>
+            <button
+              onClick={() => {
+                this.props.requestUserData(
+                  this.state.email,
+                  this.state.password,
+                  this.props.history
+                );
+                this.setState({
+                  email: "",
+                  password: ""
+                });
+              }}
+            >
+              Login
+            </button>
           )}
         </div>
         &nbsp;

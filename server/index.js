@@ -11,7 +11,7 @@ const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
 app.use(express.json());
 massive(CONNECTION_STRING).then(dbInstance => {
   app.set("db", dbInstance);
-  dbInstance.init();
+  // dbInstance.init();
   console.log("you done did it right my doode");
 });
 
@@ -26,11 +26,10 @@ app.use(
   })
 );
 
-
 //admin
-app.get("/api/auth", (req,res) => {
-    res.status(200).send(req.session.user)
-})
+app.get("/api/auth", (req, res) => {
+  res.status(200).send(req.session.user);
+});
 
 // products
 app.get("/api/store", pC.getAll);
@@ -38,12 +37,10 @@ app.post("/api/products", pC.addToCart);
 
 //auth?
 
-
-app.post('/auth/register', aC.register)
-app.post('/auth/login', aC.login)
-app.get('/auth/logout', aC.logout)
+app.post("/auth/register", aC.register);
+app.post("/auth/login", aC.login);
+app.get("/auth/logout", aC.logout);
 app.get("/auth/guest", aC.getSession);
-
 
 app.listen(SERVER_PORT || 5150, () =>
   console.log(`Damn that ${SERVER_PORT}  is whippin`)
