@@ -21,16 +21,14 @@ class Login extends Component {
     // this.register = this.register.bind(this);
     // moved to register component
   }
-  componentDidMount() {
-    this.props.requestUserData();
-    
-
+  // componentDidMount() {
+    // this.props.requestUserData();
     // axios.get("/auth/guest").then(res => {
     //   this.setState({
     //     loggedInUser: res.data
     //   });
     // });
-  }
+  // }
 
   // login() {
   //   let { email, password } = this.state;

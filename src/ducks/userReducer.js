@@ -16,14 +16,17 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER + "_FULFILLED":
       console.log("jbaijbfberdsnvoenov", action.payload);
-      if (typeof action.payload == "string") {
-        return { ...state, message: action.payload};
-      } else {
-        console.log(action);
+      // if (typeof action.payload == "string") {
+      //   return { ...state, message: action.payload };
+      // } else
+      {
+        // console.log(action);
         //  below we can not add keys to the action a=object
         // action.history.push("/products");
-        return { ...state,message:"", user: action.payload, guest: null};
+        return { ...state, user: action.payload, guest: null };
       }
+    case SET_USER + "_REJECTED":
+      return { ...state, message: action.payload.response.data };
     case SET_REGISTER + "_FULFILLED":
       console.log("after this i could sure use a nap", action.payload);
       if (typeof action.payload == "string") {
