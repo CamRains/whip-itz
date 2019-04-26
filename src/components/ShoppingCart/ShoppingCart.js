@@ -1,31 +1,35 @@
-import React, {Component} from 'react'
-import "./shoppingCart.css"
+import React, { Component } from "react";
+import axios from "axios";
+import "./shoppingCart.css";
 
-class ShoppingCart extends Component{
-    constructor () {
-        super();
-        this.state = {
-            quantity: null
-        }
-    }
+class ShoppingCart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      shoppingCart: []
+    };
+  }
 
-    render() {
-        return(
-            <div>
-            <div>
-                buy some shit doode
-            </div>
-            </div>
-        )
-    }
+  componentDidMount() {
+    this.getProductsFromCart();
+  }
 
+  getProductsFromCart = () => {
+    axios.get("/api/store").then(res => {
+      console.log("shopping cart get products function", res.data);
+      this.setState({
+        shoppingCart: res.data
+      });
+    });
+  };
 
-
-
-
-
-
+  render() {
+      const {shoppingCart} = this.state
+    return <div>
+    {shoppingCart}
+    </div>;
+  }
 }
 
-
-export default ShoppingCart
+export default ShoppingCart;

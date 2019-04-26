@@ -33,6 +33,7 @@ app.get("/api/auth", (req, res) => {
 
 // products
 app.get("/api/store", pC.getAll);
+app.get("/api/products",pC.getProductsFromCart)
 app.post("/api/products", pC.addToCart);
 
 //auth?

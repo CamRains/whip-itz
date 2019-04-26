@@ -29,7 +29,6 @@ values('Nock 2 IT Custom Release','200.00','the most popular nockon handheld rel
  create table UserCart(
  product_id integer references products(product_id),
  user_id integer references users(user_id),
- quantity integer not null
  );
  insert into UserCart(product_id,user_id,quantity)
  values(1,1,4);

@@ -19,12 +19,12 @@ export default function reducer(state = initialState, action) {
       // if (typeof action.payload == "string") {
       //   return { ...state, message: action.payload };
       // } else
-      {
-        // console.log(action);
-        //  below we can not add keys to the action a=object
-        // action.history.push("/products");
-        return { ...state, user: action.payload, guest: null };
-      }
+
+      // console.log(action);
+      //  below we can not add keys to the action a=object
+      // action.history.push("/products");
+      return { ...state, user: action.payload, guest: null };
+
     case SET_USER + "_REJECTED":
       return { ...state, message: action.payload.response.data };
     case SET_REGISTER + "_FULFILLED":
@@ -36,7 +36,7 @@ export default function reducer(state = initialState, action) {
         return { ...state, user: action.payload };
       }
     case GET_USER + "_FULFILLED":
-      if (action.payload.username == "guest") {
+      if (action.payload.username === "guest") {
         return { ...state, guest: action.payload };
       } else {
         return { ...state, user: action.payload };
