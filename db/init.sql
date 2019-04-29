@@ -26,9 +26,16 @@ insert into products (name,price,description,image,admin_id)
 values('Nock 2 IT Custom Release','200.00','the most popular nockon handheld release', 'https://www.nockonarchery.com/324-large_default/nock-on-custom-release.jpg',1),
 ('silverback','200.00','tensions activated', 'https://www.nockonarchery.com/323-large_default/silverback.jpg',1);
 
- create table UserCart(
+create table UserCart(
+ user_cart_id serial primary key,
  product_id integer references products(product_id),
  user_id integer references users(user_id),
+ quantity integer default 0
  );
- insert into UserCart(product_id,user_id,quantity)
- values(1,1,4);
+ insert into UserCart(product_id,user_id)
+ values(1,1,1);
+
+
+ create table users(
+     user_id serial primary key
+ )
