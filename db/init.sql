@@ -30,7 +30,7 @@ create table UserCart(
  user_cart_id serial primary key,
  product_id integer references products(product_id),
  user_id integer references users(user_id),
- quantity integer default 0
+ quantity integer default 1
  );
  insert into UserCart(product_id,user_id)
  values(1,1,1);

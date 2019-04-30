@@ -1,3 +1,4 @@
 update UserCart
-set quantitiy = $1
+set quantity = $3
 where user_cart_id = $1
+and product_id = $2;
