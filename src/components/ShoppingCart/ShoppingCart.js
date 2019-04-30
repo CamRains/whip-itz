@@ -33,9 +33,7 @@ class ShoppingCart extends Component {
   editQuantity = (item, quantity) => {
     // let { quantity } = this.state;
     axios.put(`/api/products/${item}`, { quantity }).then(response => {
-      this.setState({
-        shoppingCart: response.data
-      });
+      this.getProductsFromCart()
     });
   };
 
@@ -49,17 +47,18 @@ class ShoppingCart extends Component {
             <h2>{product.name}</h2>
             {product.price}
             {product.description}
+            {product.image}
           </div>
           <div className="quantity">
             <button>QTY {product.quantity}</button>
-            
             &nbsp;
-            <select
+            <select defaultValue={product.quantity}
               onChange={event =>
-                this.editQuantity(product.product_id, event.target.value)
+                this.editQuantity(product.user_cart_id, event.target.value)
               }
               type="number"
             >
+              
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

@@ -49,7 +49,7 @@ module.exports = {
           finalQuantity
         );
 
-        db.updateUserCart([user_cart_id, product_id, finalQuantity]).then(
+        db.updateUserCart([user_cart_id, finalQuantity]).then(
           product => {
             res.status(200).send(product);
           }
@@ -103,7 +103,9 @@ module.exports = {
   updateCartQuantity: (req, res) => {
     const db = req.app.get("db");
     const { quantity } = req.body;
-    db.updateCartQuantity(product_id)
+    const { user_cart_id } = req.params;
+    console.log("@@@@@@@@@@@@@@@",req.body)
+    db.updateUserCart([user_cart_id,quantity])
       .then(products => {
         res.status(200).send(products);
       })

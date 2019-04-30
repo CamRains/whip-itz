@@ -35,7 +35,7 @@ app.get("/api/auth", (req, res) => {
 app.get("/api/store", pC.getAll);
 app.get("/api/products",pC.getProductsFromCart)
 app.post("/api/products/:product_id", pC.addToCart);
-// app.put("/api/products/:product_id",pC.updateCartQuantity)
+app.put("/api/products/:user_cart_id",pC.updateCartQuantity)
 app.delete("/api/products",pC.removeFromCart)
 
 

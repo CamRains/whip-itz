@@ -24,7 +24,7 @@ create table products(
 
 insert into products (name,price,description,image,admin_id)
 values('Nock 2 IT Custom Release','200.00','the most popular nockon handheld release', 'https://www.nockonarchery.com/324-large_default/nock-on-custom-release.jpg',1),
-('silverback','200.00','tensions activated', 'https://www.nockonarchery.com/323-large_default/silverback.jpg',1);
+('silverback','200.00','tensions activated', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Male_gorilla_in_SF_zoo.jpg/440px-Male_gorilla_in_SF_zoo.jpg',1);
 
 create table UserCart(
  user_cart_id serial primary key,

@@ -92,13 +92,15 @@ class Header extends Component {
                 <a href="#/contact">Contact</a>
                 {/* <Link to="/contact">Contact</Link> */}
               </li>
-
-              {this.props.user ? (
-                <a href="#/login" onClick={this.props.logout}>Logout</a>
-              ) : (
-                <a href="#/login">Login</a>
-                // <Link to="/login">Login</Link>
-              )}
+              <li>
+                {this.props.user ? (
+                  <Link to="/login" onClick={this.props.logout}>
+                    Logout
+                  </Link>
+                ) : (
+                  <Link to="/login">Login</Link>
+                )}
+              </li>
             </ul>
           </nav>
         </div>
