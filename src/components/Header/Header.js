@@ -13,9 +13,10 @@ class Header extends Component {
     super(props);
 
     this.state = {
-      toggle: false
+      toggle: false,
+      Login: false,
       //   guest: "",
-      //   user: ""
+      user: ""
       // };
 
       // this.getSession = this.getSession.bind(this);
@@ -31,6 +32,14 @@ class Header extends Component {
     });
   }
 
+  toggleLogin() {
+    this.setState(prevState => {
+      console.log(this.state.toggle);
+      return {
+        toggle: !prevState.toggle
+      };
+    });
+  }
   // componentDidMount() {
   //   this.props.requestUser();
   // }
@@ -51,47 +60,47 @@ class Header extends Component {
     console.log(this.props);
     return (
       <header>
-        <div className="header-container">
+        <div>
           <div className="logo-container">
-            <img
-              src="https://mark.trademarkia.com/services/logo.ashx?sid=77968400"
-              alt="This is the logo"
-            />
-            <button onClick={() => this.toggleSideBar()}>
-              {this.state.toggle ? <p>&#10094;</p> : <p>&#x1F354;</p>}
-            </button>
+            <a href="#/home">Whip-Itz</a>
           </div>
-          <div>
-            <div className="nav-links">
-              <ul>
-                <li>
-                  <Link to="/home">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/cart">Cart</Link>
-                </li>
-                <li>
-                  <Link to="/products">Products</Link>
-                </li>
-                <li>
-                  <Link to="/gallery">Gallery</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-                <li>
-                  {this.props.user ? (
-                    <button onClick={this.props.logout}>Logout</button>
-                  ) : (
-                    <Link to="/login">Login</Link>
-                  )}
-                </li>
-              </ul>
-            </div>
-          </div>
+          <button onClick={() => this.toggleSideBar()}>
+            {this.state.toggle ? <p>&#x2630;</p> : <p>&#x2630;</p>}
+          </button>
+
+          <nav className={this.state.toggle ? "show" : ""}>
+            <ul>
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/cart">Cart</Link>
+              </li>
+              <li>
+                <Link to="/products">Products</Link>
+              </li>
+              <li>
+                <Link to="/gallery">Gallery</Link>
+              </li>
+              {/* <li>
+                <Link to="/contact">Contact</Link>
+              </li> */}
+              <li>
+                <a href="#/contact">Contact</a>
+                {/* <Link to="/contact">Contact</Link> */}
+              </li>
+
+              {this.props.user ? (
+                <a href="#/login" onClick={this.props.logout}>Logout</a>
+              ) : (
+                <a href="#/login">Login</a>
+                // <Link to="/login">Login</Link>
+              )}
+            </ul>
+          </nav>
         </div>
       </header>
     );

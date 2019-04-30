@@ -47,7 +47,7 @@ class Products extends Component {
   addToCart = product => {
     console.log("dhafwegifbhabhbLABEL BALLS", product);
     axios.post(`/api/products/${product.product_id}`, product).then(res => {
-      console.log(res);
+      console.log(product);
     });
   };
 

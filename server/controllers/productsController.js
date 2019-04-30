@@ -1,11 +1,11 @@
 module.exports = {
   getAll: (req, res) => {
     const db = req.app.get("db");
-    console.log("pC getAll");
+    // console.log("pC getAll");
 
     db.get_products()
       .then(products => {
-        console.log(products);
+        // console.log(products);
         res.status(200).send(products);
       })
       .catch(err => console.log("error in getAll", err));
@@ -13,26 +13,31 @@ module.exports = {
   addToCart: (req, res) => {
     const { user_id } = req.session.user;
     const db = req.app.get("db");
+    // const { user_cart_id } = 
+    // console.log(Response,"1 ++++++++++++++")
+    // console.log("QUEEEEER LABEL", req.query)
     const { product_id, quantity } = req.body;
     console.log("add to cart ========== monkeies", req.body);
     // Step 1: Grab cart from DB
 
     let UserCart = [];
     db.get_UserCart(user_id).then(Response => {
+      // console.log(Response, "2INSERT YO MOMMA JOKE HERE")
       UserCart = Response;
-      let  {user_cart_id}  = Response[0];
-      console.log(user_cart_id, "INSERT YO MOMMA JOKE HERE")
-      console.log(UserCart, "this is the usercart label");
+      // console.log(UserCart, "this is the usercart label");
       // there seems to be a bug here where ther is one more product listed in the terminal than there is in the actual cart.
 
       // Step 2: Check if product_id exists in cart
-      console.log(req.params.product_id, "HUNTERS WATCHINGGGGGG");
+      // console.log(req.params.product_id, "HUNTERS WATCHINGGGGGG");
+      // console.log(req.params, "HUNTERS WATCHINGGGGGG");
+      console.log("HUNTERS WATCHINGGGGGG");
       let index = UserCart.findIndex(
         product => product.product_id === +req.params.product_id
       );
       console.log("this it the index checl", index);
       if (index !== -1) {
-        console.log("buttcheaks", UserCart[index].quantity);
+        console.log("buttcheaks", UserCart[index]);
+        let {user_cart_id} = UserCart[index]
         let newQuantity = UserCart[index].quantity;
         newQuantity += 1;
         console.log(newQuantity, "THIS IS KLLING ME");
@@ -85,6 +90,7 @@ module.exports = {
   removeFromCart: (req, res) => {
     const db = req.app.get("db");
     const { user_cart_id } = req.query;
+    console.log("remove from cart LABEL", req.query)
     db.remove_product(user_cart_id)
       .then(products => {
         res.status(200).send(products);
