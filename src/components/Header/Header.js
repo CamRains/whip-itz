@@ -32,14 +32,14 @@ class Header extends Component {
     });
   }
 
-  toggleLogin() {
-    this.setState(prevState => {
-      console.log(this.state.toggle);
-      return {
-        toggle: !prevState.toggle
-      };
-    });
-  }
+  // toggleLogin() {
+  //   this.setState(prevState => {
+  //     console.log(this.state.toggle);
+  //     return {
+  //       toggle: !prevState.toggle
+  //     };
+  //   });
+  // }
   // componentDidMount() {
   //   this.props.requestUser();
   // }
@@ -68,7 +68,7 @@ class Header extends Component {
             {this.state.toggle ? <p>&#x2630;</p> : <p>&#x2630;</p>}
           </button>
 
-          <nav className={this.state.toggle ? "show" : ""}>
+          <nav className={this.state.toggle ? "show" : "dont"}>
             <ul>
               <li>
                 <Link to="/home">Home</Link>

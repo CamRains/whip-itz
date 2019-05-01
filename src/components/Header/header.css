@@ -7,13 +7,13 @@ header {
 header a {
   color: white;
   text-decoration: none;
-  font-size: 3vh;
+  font-size: 2.5vw;
 }
 header > div {
   background: lime;
   height: 100%;
   width: 100%;
-  max-width: 1000px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -24,62 +24,64 @@ header nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: 1vw;
+}
+header nav ul li {
+  padding: 1vw;
 }
 
 .logo-container {
   position: relative;
   z-index: 2;
-  padding-left: 20px;
+  padding-left: 1vw;
 }
 header button {
   display: none;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 600px) {
   header > div {
     padding: 0 20px;
   }
   header nav {
+    background: grey;
     position: fixed;
-    height: 100px;
-    width: 100px;
-    top: 0;
-    right: 0;
-    padding:35px;
-    transform: translate(200px, 50px);
+    display: flex;
+    justify-content: center;
+    height: 60vw;
+    width: 150px;
+    right: -300px;
+    top: 15vh;
+    padding: 0px;
+    /* translate: (400px, 40px); */
     transition: 0.5s ease-in-out;
   }
   header nav ul {
-    justify-content: space-around;
+    display: flex;
     flex-direction: column;
-    height: 100px;
-    background: grey;
-    width: 100%;
-    padding: 150px;
   }
- header nav ul li{
-   margin: 8px;
- }
-  header .show {
-    transform: translate(95px, 50px);
+
+  .show {
+    top: 15vh;
+    right: 0
     
   }
   header button {
-    right: 20;
-    top: 20;
     border: none;
     background: lime;
     display: flex;
     position: relative;
     z-index: 2;
-    height: 10vh;
-    width: 40px;
+    
     justify-content: center;
     align-items: center;
-    /* box-shadow: 1px, 3px, 5px rgba(0, 0, 0, 0.363); */
     cursor: pointer;
   }
-  .logo-container {
+
+  header button  p {
+    font-size: 6vh
+  }
+  header a {
+    font-size: 3vw;
   }
 }
