@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 import "./shoppingCart.css";
 
 class ShoppingCart extends Component {
@@ -33,7 +35,7 @@ class ShoppingCart extends Component {
   editQuantity = (item, quantity) => {
     // let { quantity } = this.state;
     axios.put(`/api/products/${item}`, { quantity }).then(response => {
-      this.getProductsFromCart()
+      this.getProductsFromCart();
     });
   };
 
@@ -52,13 +54,13 @@ class ShoppingCart extends Component {
           <div className="quantity">
             <button>QTY {product.quantity}</button>
             &nbsp;
-            <select defaultValue={product.quantity}
+            <select
+              defaultValue={product.quantity}
               onChange={event =>
                 this.editQuantity(product.user_cart_id, event.target.value)
               }
               type="number"
             >
-              
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -91,8 +93,24 @@ class ShoppingCart extends Component {
     });
 
     return (
-      <div>
-        <div>{products}</div>
+      <div className="Cart">
+        {products[0] ? (
+          <div>
+            <Link to="/checkout">
+              <button>Checkout</button>
+            </Link>
+
+            {products}
+          </div>
+        ) : (
+          <div>
+            <h1>Shopping Cart is empyt go buy some schtufff</h1>
+
+            <Link to="/products">
+              <button>Return To Products</button>
+            </Link>
+          </div>
+        )}
       </div>
     );
   }
