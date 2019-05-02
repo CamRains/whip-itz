@@ -45,7 +45,7 @@ header button {
   }
   header nav {
     background: grey;
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     height: 60vw;

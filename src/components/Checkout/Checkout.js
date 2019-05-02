@@ -68,7 +68,7 @@ class Checkout extends Component {
     });
     return (
       <div className="checkout">
-        <h3>Total={this.state.finalSum}</h3>
+        <h3>Total={"$" + this.state.finalSum}</h3>
         <div>{products}</div>
       </div>
     );

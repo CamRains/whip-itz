@@ -25,6 +25,7 @@ app.use(
     }
   })
 );
+app.use( express.static( `${__dirname}/../build` ) );
 
 //admin
 app.get("/api/auth", (req, res) => {
@@ -45,6 +46,15 @@ app.post("/auth/register", aC.register);
 app.post("/auth/login", aC.login);
 app.get("/auth/logout", aC.logout);
 app.get("/auth/guest", aC.getSession);
+
+
+
+
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 app.listen(SERVER_PORT || 5150, () =>
   console.log(`Damn that ${SERVER_PORT}  is whippin`)
