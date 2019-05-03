@@ -13,7 +13,7 @@ class Home extends Component {
         <div className="products-button">
           <div>
             <Link to="products">
-              <button> Products</button>
+              <button> See More </button>
             </Link>
           </div>
         </div>

@@ -62,6 +62,8 @@ class Header extends Component {
       <header>
         <div>
           <div className="logo-container">
+            <img src="https://mark.trademarkia.com/services/logo.ashx?sid=77968400" />
+            &nbsp;
             <a href="#/home">Whip-Itz</a>
           </div>
           <button onClick={() => this.toggleSideBar()}>
@@ -71,7 +73,7 @@ class Header extends Component {
           <nav className={this.state.toggle ? "show" : "dont"}>
             <ul>
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/about">About</Link>

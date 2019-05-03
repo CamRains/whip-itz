@@ -112,5 +112,10 @@ module.exports = {
       .catch(err =>
         console.log("error in the update cart quantity function server side")
       );
-  }
+  },
+
+
+
+
+  
 };

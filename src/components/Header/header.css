@@ -5,7 +5,7 @@ header {
   height: 15vh;
 }
 header a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 2.5vw;
 }
@@ -35,6 +35,10 @@ header nav ul li {
   z-index: 2;
   padding-left: 1vw;
 }
+.logo-container img{
+  height: 7vw;
+  width: 7vw
+}
 header button {
   display: none;
 }
@@ -45,7 +49,7 @@ header button {
   }
   header nav {
     background: grey;
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     height: 60vw;
@@ -63,8 +67,8 @@ header button {
 
   .show {
     top: 15vh;
-    right: 0
-    
+    right: 0;
+    position: absolute;
   }
   header button {
     border: none;
@@ -72,16 +76,17 @@ header button {
     display: flex;
     position: relative;
     z-index: 2;
-    
+
     justify-content: center;
     align-items: center;
     cursor: pointer;
   }
 
-  header button  p {
-    font-size: 6vh
+  header button p {
+    font-size: 6vh;
   }
   header a {
     font-size: 3vw;
+    color: black;
   }
 }

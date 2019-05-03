@@ -3,11 +3,13 @@ const massive = require("massive");
 const app = express();
 const pC = require("./controllers/productsController");
 const aC = require("./controllers/authController");
+const sC = require("./controllers/stripeController")
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, STRIPE_SK_TEST } = process.env;
+const stripe = require("stripe")(STRIPE_SK_TEST)
 app.use(express.json());
 massive(CONNECTION_STRING).then(dbInstance => {
   app.set("db", dbInstance);
@@ -38,7 +40,7 @@ app.get("/api/products",pC.getProductsFromCart)
 app.post("/api/products/:product_id", pC.addToCart);
 app.put("/api/products/:user_cart_id",pC.updateCartQuantity)
 app.delete("/api/products",pC.removeFromCart)
-
+app.post('/api/stripe', sC.purchaseProducts)
 
 //auth?
 
@@ -59,3 +61,6 @@ app.get('*', (req, res)=>{
 app.listen(SERVER_PORT || 5150, () =>
   console.log(`Damn that ${SERVER_PORT}  is whippin`)
 );
+
+
+module.exports.stripe = stripe

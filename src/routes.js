@@ -13,11 +13,11 @@ import Register from "./components/Register/Register"
 export default (
   <Switch>
     <Route  path="/products" component={Products}  />
-    <Route  path="/home" component={Home} />
     <Route  path="/cart" component={ShoppingCart} />
     <Route  path="/login" component={Login} />
     <Route  path="/register" component={Register} />
     <Route  path="/checkout" component={Checkout} />
+    <Route  path="/" component={Home} />
     
   </Switch>
 );
