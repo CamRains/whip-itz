@@ -17,6 +17,7 @@ class Checkout extends Component {
   componentDidMount = () => {
     this.getProductsFromCart();
     this.SumTotal();
+    // this.sendFinalSum()
   };
 
   getProductsFromCart = () => {
@@ -42,20 +43,35 @@ class Checkout extends Component {
           .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
       });
       console.log(this.state.finalSum);
-      //   let finalSum = res.data.map(
-      //       (x)=> {return((x.price * x.quantity) + (x.price * x.quantity * .08))}
-      //     ).reduce((accumulator, currentValue) => accumulator + currentValue,0)
-      //     console.log(finalSum)
     });
-
-    //   const { price, quantity } = this.state.shoppingCart[0];
-    // let total = this.state.shoppingCart.map(product => {
-    //   product(price * quantity);
-    // });
   };
+
+  // sendFinalSum = (finalSum) => {
+  //   console.log(this.state.finalSum)
+  //   // app.post('/api/stripe')
+
+  // }
+
+
+
+
   onToken(token) {
     console.log("onToken", token);
-    
+    fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        stripeToken: token.id
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        console.log("json");
+        console.log(json);
+      });
   }
 
   render() {
@@ -71,12 +87,6 @@ class Checkout extends Component {
           <div className="quantity">
             <button>QTY {product.quantity}</button>
           </div>
-          {/* <div>
-            <StripeCheckout
-              token={this.onToken}
-              stripeKey="pk_test_Q1hfudJFuWLCqMZoKqHYoSH3004Sfe2ucM"
-            />
-          </div>  */}
         </div>
       );
     });
