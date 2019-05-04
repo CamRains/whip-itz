@@ -40,7 +40,8 @@ app.get("/api/products",pC.getProductsFromCart)
 app.post("/api/products/:product_id", pC.addToCart);
 app.put("/api/products/:user_cart_id",pC.updateCartQuantity)
 app.delete("/api/products",pC.removeFromCart)
-app.post('/api/stripe', sC.purchaseProducts)
+app.post("/api/stripe", sC.purchaseProducts)
+app.post("/api/stripe1", sC.sendPrice)
 
 //auth?
 

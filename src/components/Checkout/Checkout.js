@@ -12,13 +12,24 @@ class Checkout extends Component {
       finalSum: 0
     };
     this.onToken = this.onToken.bind(this);
+    // this.sendFinal = this.sendFinal.bind.this;
   }
 
   componentDidMount = () => {
     this.getProductsFromCart();
     this.SumTotal();
-    // this.sendFinalSum()
+    // this.sendFinal();
   };
+
+  // componentDidUpdate = () => {
+  //   this.sendFinal();
+  // };
+
+  // sendFinalSum = (finalSum) => {
+  //   console.log(this.state.finalSum)
+  //   // app.post('/api/stripe')
+
+  // }
 
   getProductsFromCart = () => {
     axios.get("/api/products").then(res => {
@@ -29,7 +40,14 @@ class Checkout extends Component {
       console.log(this.state.shoppingCart[0]);
     });
   };
+  
+  sendFinal() {
+    const { finalSum } = this.state;
+    console.log(finalSum);
+    axios.post("/api/stripe1", { finalSum }).then(res => {});
 
+    // console.log(this.state.finalSum);
+  }
   SumTotal = () => {
     axios.get("/api/products").then(res => {
       console.log(res.data);
@@ -42,18 +60,15 @@ class Checkout extends Component {
           })
           .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
       });
-      console.log(this.state.finalSum);
+      //why cant i do this
+      // .then(finalSum => {
+      //   axios.post(`/api/stripe/${this.state.finalSum}`, finalSum).then(res => {
+      //     console.log(finalSum);
+      //   });
+      // });
+      // console.log(this.state.finalSum);
     });
   };
-
-  // sendFinalSum = (finalSum) => {
-  //   console.log(this.state.finalSum)
-  //   // app.post('/api/stripe')
-
-  // }
-
-
-
 
   onToken(token) {
     console.log("onToken", token);
