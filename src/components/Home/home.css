@@ -1,22 +1,44 @@
-body .landing-page {
+@media (min-width: 0px) {
+  .landing-page-picture {
     display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: flex-end;
-	align-content: center;
-  height: 80vh;
-  width: 100vw;
-  background-image: url("https://scontent.fphx1-1.fna.fbcdn.net/v/t1.0-9/66946_437615712982164_959718576_n.jpg?_nc_cat=109&_nc_ht=scontent.fphx1-1.fna&oh=d3d77db42ceba27a4e8ab0575e475608&oe=5D2C976D");
-  background-size: cover;
-}
-.products-button button{
-    height: 5vw;
-    width: 20vw;
-    font-size: 3vh;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+    height: 90vh;
+    width: 100vw;
+    background-image: url("https://scontent.fphx1-1.fna.fbcdn.net/v/t1.0-9/66946_437615712982164_959718576_n.jpg?_nc_cat=109&_nc_ht=scontent.fphx1-1.fna&oh=d3d77db42ceba27a4e8ab0575e475608&oe=5D2C976D");
+    background-size: cover;
+  }
+  .products-button button {
+    height: 8vh;
+    width: 22vw;
+    font-size: 2.7vh;
     margin-bottom: 10vh;
     color: white;
-    background-color: red
-    
+    background-color: red;
+    opacity: 0.8;
+  }
+  .landing-page-video {
+    display: none;
+  }
 }
 
+@media (min-width: 701px) {
+  .landing-page-video {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+    height: 30vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .landing-page-picture {
+    display: none;
+  }
+}

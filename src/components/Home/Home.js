@@ -10,20 +10,23 @@ class Home extends Component {
   render() {
     return (
       <div>
-      <div className="landing-page">
-        {/* <video autoPlay loop muted >
-        <source src="" */}
-        {/* </video> */}
-        
-        
-        <div className="products-button">
-          <div>
-            <Link to="products">
-              <button> See More </button>
-            </Link>
+        <div className="landing-page-picture">
+          <div className="products-button">
+            <div>
+              <Link to="products">
+                <button> See More </button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+        <div className="landing-page-video">
+          <video autoPlay loop muted>
+            <source
+              src="https://s3-us-west-1.amazonaws.com/whipitz/whipitz1-propercut1.mov"
+              type="video/mp4"
+            />
+          </video>
+        </div>
       </div>
     );
   }
