@@ -71,7 +71,11 @@ class Products extends Component {
         </div>
       );
     });
-    return <div>{products}</div>;
+    return <div>
+      
+    <h1>PRODUCTS</h1>
+    
+    {products}</div>;
   }
 }
 

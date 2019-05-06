@@ -40,14 +40,14 @@ class Checkout extends Component {
       console.log(this.state.shoppingCart[0]);
     });
   };
-  
-  sendFinal() {
-    const { finalSum } = this.state;
-    console.log(finalSum);
-    axios.post("/api/stripe1", { finalSum }).then(res => {});
 
-    // console.log(this.state.finalSum);
-  }
+  // sendFinal() {
+  //   const { finalSum } = this.state;
+  //   console.log(finalSum);
+  //   axios.post("/api/stripe1", { finalSum }).then(res => {});
+
+  //   // console.log(this.state.finalSum);
+  // }
   SumTotal = () => {
     axios.get("/api/products").then(res => {
       console.log(res.data);
@@ -79,7 +79,8 @@ class Checkout extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        stripeToken: token.id
+        stripeToken: token.id,
+        finalSum: this.state.finalSum
       })
     })
       .then(res => res.json())
@@ -114,7 +115,9 @@ class Checkout extends Component {
         <div>
           <StripeCheckout
             token={this.onToken}
-            stripeKey="pk_test_Q1hfudJFuWLCqMZoKqHYoSH3004Sfe2ucM"
+            stripeKey="pk_live_2LtXiO7WmOVmDb0y6Xd4pQZV00LtE94V5w"
+            amount={100 * this.state.finalSum}
+            
           />
         </div>
       </div>

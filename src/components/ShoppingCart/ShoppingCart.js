@@ -46,6 +46,7 @@ class ShoppingCart extends Component {
       return (
         <div>
           <div className="product-container" key={product.product_id}>
+          <img src={product.image} />
             <h2>{product.name}</h2>
             {product.price}
             {product.description}

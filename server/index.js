@@ -8,8 +8,8 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, STRIPE_SK_TEST } = process.env;
-const stripe = require("stripe")(STRIPE_SK_TEST)
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, STRIPE_KEY } = process.env;
+const stripe = require("stripe")(STRIPE_KEY)
 app.use(express.json());
 massive(CONNECTION_STRING).then(dbInstance => {
   app.set("db", dbInstance);
@@ -41,7 +41,7 @@ app.post("/api/products/:product_id", pC.addToCart);
 app.put("/api/products/:user_cart_id",pC.updateCartQuantity)
 app.delete("/api/products",pC.removeFromCart)
 app.post("/api/stripe", sC.purchaseProducts)
-app.post("/api/stripe1", sC.sendPrice)
+// app.post("/api/stripe1", sC.sendPrice)
 
 //auth?
 

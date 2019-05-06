@@ -1,4 +1,4 @@
-.landing-page {
+body .landing-page {
     display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;

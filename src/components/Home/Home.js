@@ -9,7 +9,13 @@ class Home extends Component {
 
   render() {
     return (
+      <div>
       <div className="landing-page">
+        {/* <video autoPlay loop muted >
+        <source src="" */}
+        {/* </video> */}
+        
+        
         <div className="products-button">
           <div>
             <Link to="products">
@@ -17,6 +23,7 @@ class Home extends Component {
             </Link>
           </div>
         </div>
+      </div>
       </div>
     );
   }

@@ -8,11 +8,13 @@ import Home from "./components/Home/Home";
 import Checkout from "./components/Checkout/Checkout";
 import Login from "./components/Login/Login"
 import Register from "./components/Register/Register"
+import About from "./components/About/About"
 // import Header from "./components/Header/Header"    did this in app.js since it will always show up
 
 export default (
   <Switch>
     <Route  path="/products" component={Products}  />
+    <Route  path="/about" component={About}  />
     <Route  path="/cart" component={ShoppingCart} />
     <Route  path="/login" component={Login} />
     <Route  path="/register" component={Register} />

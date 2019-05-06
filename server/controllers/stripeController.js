@@ -6,7 +6,7 @@ module.exports = {
     const stripeToken = req.body.stripeToken;
     stripe.stripe.charges
       .create({
-        amount: 1000,
+        amount: 100 * req.body.finalSum,
         currency: "usd",
         description: "TEST CHARGE",
         source: stripeToken
@@ -21,8 +21,8 @@ module.exports = {
           .status(500)
           .send({ message: "An Error has occurred  ^^^^^^^^^^^ ", err });
       });
-  },
-  sendPrice: (req, res) => {
-    console.log("SALAMI", req.body);
   }
+  // sendPrice: (req, res) => {
+  //   console.log("SALAMI", req.body);
+  // }
 };
