@@ -1,7 +1,16 @@
+.Gallery{
+  color:white;
+padding-top: 3%;
+padding-bottom: 6%;
+font-size: 10vw;
+font-family: fantasy
+}
+
+
 .container {
     margin: 0 auto;
     max-width: 1200px;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
   }
   
   .responsive-image {
@@ -9,6 +18,8 @@
   }
   .cell img {
     display: block;
+    height: 45vw;
+    width: 60vw
   }
   @media screen and (min-width: 600px) {
     .grid {

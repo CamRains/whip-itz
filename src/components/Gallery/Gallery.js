@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import "./gallary.css";
+import "./gallery.css";
 
 class Gallery extends Component {
   constructor() {
@@ -16,9 +16,6 @@ class Gallery extends Component {
 
         <div class="container">
           <div class="grid">
-            <div class="cell">
-              {/* <img src="https://s3-us-west-1.amazonaws.com/whipitz/gallery/IMG_2.jpg" class="responsive-image" /> */}
-            </div>
             <div class="cell">
               <img
                 src="https://s3-us-west-1.amazonaws.com/whipitz/gallery/IMG_3.jpg"
@@ -134,8 +131,8 @@ class Gallery extends Component {
               />
             </div>
             <div class="cell">
-              <img
-                src="https://s3-us-west-1.amazonaws.com/whipitz/gallery/lindsericchirstinarzr.jpeg"
+              <img 
+                src="https://s3-us-west-1.amazonaws.com/whipitz/gallery/Screen+Shot+2019-05-07+at+10.55.39+AM.png"
                 class="responsive-image"
               />
             </div>

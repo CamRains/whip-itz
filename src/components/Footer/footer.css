@@ -1,0 +1,17 @@
+/* .footer {
+  background: grey;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+} */
+.bottoms-up {
+    background: grey;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  font-size: 10px
+}
