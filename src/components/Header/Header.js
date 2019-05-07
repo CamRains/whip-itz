@@ -64,6 +64,7 @@ class Header extends Component {
           <div className="logo-container">
             <img src="https://mark.trademarkia.com/services/logo.ashx?sid=77968400" />
             &nbsp;
+            &nbsp;
             <a href="#/home">Whip-Itz</a>
           </div>
           <button onClick={() => this.toggleSideBar()}>

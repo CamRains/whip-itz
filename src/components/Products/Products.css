@@ -13,9 +13,17 @@
   color: white;
 }
 .father h1 {
+  display: flex;
+  justify-content: center;
   padding-top: 2vw;
   padding-bottom: 2vw;
-  font-size: 3.3vw;
+  
+  font-size: 25px;
+}
+.title-products  {
+display: flex;
+justify-content: center;
+align-content: center;
 }
 .products-display {
   display: flex;
@@ -46,7 +54,7 @@
   width: 40%;
   justify-content: flex-end;
   margin-left: 30%;
-  font-size: 1.2vw;
+  font-size: 15px;
   padding-bottom: 2vw
 }
 .products-container button {
@@ -55,7 +63,8 @@
   border-radius: 50px;
   background-color: lime;
   color: black;
-  font-size:1.5vw ;
+  font-size:12px ;
+  margin-bottom: 75px
 }
 .products-container button:hover {
   border-radius: 50px;

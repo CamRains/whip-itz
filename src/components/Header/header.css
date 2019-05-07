@@ -33,11 +33,12 @@ header nav ul li {
 .logo-container {
   position: relative;
   z-index: 2;
-  padding-left: 1vw;
+  padding-right: 7%;
 }
-.logo-container img{
-  height: 7vw;
-  width: 7vw
+.logo-container img {
+  height: 10vh;
+  width: 25%;
+  margin-left: -3vw;
 }
 header button {
   display: none;
@@ -52,18 +53,18 @@ header button {
     position: fixed;
     display: flex;
     justify-content: center;
-    z-index: 5; 
+    z-index: 5;
     height: 75%;
     width: 50%;
     right: -3000vw;
     top: 15vh;
-    opacity: .97;
+    opacity: 0.97;
     transition: 0.25s ease-in-out;
   }
   header nav ul {
     display: flex;
     flex-direction: column;
-    padding: 50px
+    padding: 50px;
   }
 
   .show {
@@ -89,5 +90,16 @@ header button {
   header a {
     font-size: 3vw;
     color: black;
+  }
+  .logo-container {
+    padding-right: 7%;
+  }
+  .logo-container a {
+   font-size: 20px;
+  }
+  .logo-container img {
+    height: 10vh;
+    width: 10vw;
+    margin-left: -3vw;
   }
 }
