@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Products.css";
 
 class Products extends Component {
   constructor(props) {
@@ -56,26 +57,24 @@ class Products extends Component {
       console.log(product);
 
       return (
-        <div>
-          <div className="products-container" key={product.product_id}>
-            <img src={product.image} />
-            <h2>{product.name}</h2>
-            <h2>{"$" + product.price}</h2>
-            &nbsp;
-            {product.description}
-          </div>
+        <div className="products-container" key={product.product_id}>
+          <img src={product.image} />
+          <h2>{product.name}</h2>
+          <h3>{"$" + product.price}</h3>
+          <h4>{product.description}</h4>
           &nbsp;
-          <div className="storefront-buttons">
-            <button onClick={() => this.addToCart(product)}>Add to Cart</button>
-          </div>
+          <button onClick={() => this.addToCart(product)}>Add to Cart</button>
         </div>
       );
     });
-    return <div>
-      
-    <h1>PRODUCTS</h1>
-    
-    {products}</div>;
+    return (
+      <div className="father">
+        <div className="title-products">
+          <h1>PRODUCTS</h1>
+        </div>
+        <div className="products-display">{products}</div>
+      </div>
+    );
   }
 }
 

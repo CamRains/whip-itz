@@ -1,0 +1,60 @@
+.father {
+    width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: space-around;
+  background-image: url("http://pluspng.com/img-png/diamond-plate-png-hd-black-diamondplate-industrial-image-png-1920.png");
+  background-image: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.father h1 {
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+  font-size: 3vw;
+}
+.products-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.products-container {
+  color: red;
+  /* margin: 0 auto; */
+  width: 33vw;
+  /* height: 100%; */
+  padding-bottom: 2vw;
+}
+.products-container img {
+    
+  height: 50%;
+  width: 50%;
+  padding-top: 3%;
+}
+.products-container h4 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 40%;
+  justify-content: flex-end;
+  margin-left: 30%;
+}
+.products-container button {
+  height: 10vw;
+  width: 40%;
+  border-radius: 50px;
+  background-color: lime;
+  color: black;
+}
+.products-container button:hover {
+  border-radius: 50px;
+  color: lime;
+  background-color: black;
+}

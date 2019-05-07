@@ -9,7 +9,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="landing-page">
         <div className="landing-page-picture">
           <div className="products-button">
             <div>
@@ -20,11 +20,12 @@ class Home extends Component {
           </div>
         </div>
         <div className="landing-page-video">
-          <video autoPlay loop muted>
+          <video width="100%" height="100%" autoPlay loop muted>
             <source
-              src="https://s3-us-west-1.amazonaws.com/whipitz/whipitz1-propercut1.mov"
+              src="https://s3-us-west-1.amazonaws.com/whipitz/final-final-10.mp4"
               type="video/mp4"
-            />
+              />
+              <button>See More </button>
           </video>
         </div>
       </div>

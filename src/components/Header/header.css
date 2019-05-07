@@ -52,6 +52,7 @@ header button {
     position: fixed;
     display: flex;
     justify-content: center;
+    z-index: 5; 
     height: 60vw;
     width: 150px;
     right: -300px;

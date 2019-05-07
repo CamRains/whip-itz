@@ -9,6 +9,7 @@ import Checkout from "./components/Checkout/Checkout";
 import Login from "./components/Login/Login"
 import Register from "./components/Register/Register"
 import About from "./components/About/About"
+import Gallery from "./components/Gallery/Gallery"
 // import Header from "./components/Header/Header"    did this in app.js since it will always show up
 
 export default (
@@ -19,6 +20,7 @@ export default (
     <Route  path="/login" component={Login} />
     <Route  path="/register" component={Register} />
     <Route  path="/checkout" component={Checkout} />
+    <Route  path="/gallery" component={Gallery} />
     <Route  path="/" component={Home} />
     
   </Switch>
