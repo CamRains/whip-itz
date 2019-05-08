@@ -72,7 +72,7 @@ class Login extends Component {
                 value={email}
                 onChange={e => this.setState({ email: e.target.value })}
                 type="email"
-                placeholder="Email"
+                placeholder="Email" 
               />
               &nbsp;
               <input

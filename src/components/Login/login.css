@@ -17,18 +17,30 @@
   position: relative;
   justify-content: flex-end;
   align-items: center;
-  width: 80%;
+  width: 60vw;
   height: 80%;
-  background: rgba(220, 74, 12, 0.612);
+  background: rgba(111, 100, 95, 0.968);
+  opacity: .85
 }
 .inputs li {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding-bottom:15vh
+  padding-bottom: 15vh;
+  color: ;
+  /* background: grey */
 }
 .inputs li input {
-    height: 10vh;
-    width: 150%
+  height: 10vh;
+  width: 50vw;
+  background-color: rgba(160, 154, 154, 0.214);
+  border: none;
+  color: white;
+  font-size: 20px;
+}
+::placeholder {
+  color: white;
+  font-size: 15px;
+  padding-left: 3%
 }
