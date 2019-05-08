@@ -8,12 +8,15 @@ class Products extends Component {
 
     this.state = {
       products: [],
-      shoppingCart: []
+      shoppingCart: [],
+      user: ""
     };
+    this.checkUser = this.checkUser.bind(this);
   }
 
   componentDidMount() {
     this.getAll();
+    this.checkUser();
   }
 
   getAll = () => {
@@ -22,6 +25,16 @@ class Products extends Component {
       this.setState({
         products: res.data
       });
+    });
+  };
+
+  checkUser = () => {
+    axios.get("/api/products").then(res => {
+      console.log("shopping CART get PRODUCTS function", res.data[0].user_id);
+      this.setState({
+        user: res.data[0].user_id
+      });
+      console.log(this.state.user);
     });
   };
 
@@ -63,7 +76,15 @@ class Products extends Component {
           <h3>{"$" + product.price}</h3>
           <h4>{product.description}</h4>
           &nbsp;
-          <button onClick={() => this.addToCart(product)}>Add to Cart</button>
+          <button
+            onClick={() =>
+              this.state.user
+                ? this.addToCart(product)
+                : alert("Must Login to add to cart")
+            }
+          >
+            Add to Cart
+          </button>
         </div>
       );
     });

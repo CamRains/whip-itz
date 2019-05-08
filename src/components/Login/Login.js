@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { requestUserData } from "../../ducks/userReducer";
 import { connect } from "react-redux";
+import "./login.css";
 // import Header from "../Header/Header";
 
 class Login extends Component {
@@ -22,12 +23,12 @@ class Login extends Component {
     // moved to register component
   }
   // componentDidMount() {
-    // this.props.requestUserData();
-    // axios.get("/auth/guest").then(res => {
-    //   this.setState({
-    //     loggedInUser: res.data
-    //   });
-    // });
+  // this.props.requestUserData();
+  // axios.get("/auth/guest").then(res => {
+  //   this.setState({
+  //     loggedInUser: res.data
+  //   });
+  // });
   // }
 
   // login() {
@@ -65,7 +66,7 @@ class Login extends Component {
     return (
       <div className="form-container-parent">
         <div className="login-form">
-          <div>
+          <div className="inputs">
             <li>
               <input
                 value={email}
@@ -73,6 +74,7 @@ class Login extends Component {
                 type="email"
                 placeholder="Email"
               />
+              &nbsp;
               <input
                 value={password}
                 onChange={e => this.setState({ password: e.target.value })}
@@ -100,13 +102,11 @@ class Login extends Component {
               Login
             </button>
           )}
-        </div>
-        &nbsp;
-        <div>
           <Link to="/register">
             <button>Register</button>
           </Link>
         </div>
+        &nbsp;
         {this.props.message}
       </div>
     );
