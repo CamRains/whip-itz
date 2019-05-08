@@ -92,8 +92,8 @@ class Header extends Component {
                 <Link to="/contact">Contact</Link>
               </li> */}
               <li>
-                <a href="#/contact">Contact</a>
-                {/* <Link to="/contact">Contact</Link> */}
+                {/* <a href="#/contact">Contact</a> */}
+                <Link to="/contact">Contact</Link>
               </li>
               <li>
                 {this.props.user ? (

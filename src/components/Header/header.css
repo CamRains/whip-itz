@@ -64,11 +64,11 @@ header button {
   header nav ul {
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    overflow: scroll
   }
 
   .show {
-    top: 15vh;
+    /* top: 15vh; */
     right: 0;
     position: absolute;
   }
@@ -87,15 +87,15 @@ header button {
   header button p {
     font-size: 6vh;
   }
-  header a {
-    font-size: 3vw;
-    color: black;
+  header nav ul li a  {
+    font-size: 3vh;
+    padding: 5px
   }
   .logo-container {
     padding-right: 7%;
   }
   .logo-container a {
-   font-size: 20px;
+    font-size: 20px;
   }
   .logo-container img {
     height: 10vh;
