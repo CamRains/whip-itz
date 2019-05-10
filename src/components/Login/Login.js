@@ -66,13 +66,14 @@ class Login extends Component {
     return (
       <div className="form-container-parent">
         <div className="login-form">
+          <h1>Sign In</h1>
           <div className="inputs">
             <li>
               <input
                 value={email}
                 onChange={e => this.setState({ email: e.target.value })}
                 type="email"
-                placeholder="Email" 
+                placeholder="Email"
               />
               &nbsp;
               <input
@@ -86,7 +87,7 @@ class Login extends Component {
           {loggedInUser.email ? (
             <button onClick={() => this.logout()}>Logout</button>
           ) : (
-            <button
+            <button className="login-button"
               onClick={() => {
                 this.props.requestUserData(
                   this.state.email,
@@ -102,8 +103,9 @@ class Login extends Component {
               Login
             </button>
           )}
+          <h3>Not A User? Register to Continue</h3>
           <Link to="/register">
-            <button>Register</button>
+            <button className="register-button">Register</button>
           </Link>
         </div>
         &nbsp;
